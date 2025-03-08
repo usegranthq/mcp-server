@@ -1,14 +1,8 @@
 # UseGrant MCP Server
 
-This is a Model Context Protocol (MCP) server for interacting with the UseGrant API. It provides a set of tools for managing providers, clients, tenants, and access tokens through the UseGrant platform.
+This is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) server for interacting with the UseGrant API. It provides a set of tools for managing providers, clients, tenants, and access tokens through the UseGrant platform.
 
-## Installation
-
-```bash
-npm install @usegrant/mcp-server
-```
-
-## Available Tools
+## Tools
 
 - **list_providers**: List all providers
 - **create_provider**: Create a new provider
@@ -29,6 +23,11 @@ npm install @usegrant/mcp-server
 - **delete_tenant_provider**: Delete a provider for a tenant
 - **validate_access_token**: Validate an access token for a tenant
 
+## Requirements
+
+- Node.js 16 or higher
+- A valid UseGrant API key. Refer [here](https://usegrant.dev/docs/authentication) for more details.
+
 ## Using with Claude desktop
 
 Add the following config to your `claude_desktop_config` file:
@@ -46,8 +45,3 @@ Add the following config to your `claude_desktop_config` file:
   }
 }
 ```
-
-## Requirements
-
-- Node.js 16 or higher
-- A valid UseGrant API key
