@@ -1,6 +1,6 @@
 {
   "name": "@usegrant/mcp",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "MCP server for usegrant",
   "repository": "github:usegranthq/mcp-server",
   "homepage": "https://github.com/usegranthq/mcp-server#readme",
