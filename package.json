@@ -12,6 +12,9 @@
     "usegrant",
     "sdk"
   ],
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "provenance": true,
     "access": "public"
@@ -19,7 +22,7 @@
   "type": "module",
   "exports": "./dist/index.js",
   "bin": {
-    "usegrant-mcp": "./dist/index.js"
+    "usegrant-mcp": "dist/index.js"
   },
   "scripts": {
     "dev": "tsc --watch",
