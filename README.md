@@ -45,3 +45,27 @@ Add the following config to your `claude_desktop_config` file:
   }
 }
 ```
+
+## Testing
+
+To test the MCP server, we can use [mcp inspector](https://github.com/modelcontextprotocol/inspector).
+
+Run the following command to watch and build the project:
+
+```bash
+npm run dev
+```
+
+and then start the inspector:
+
+```bash
+npx @modelcontextprotocol/inspector dist/index.js
+
+# or
+# if to use custom ports
+CLIENT_PORT=4321 SERVER_PORT=4322 npx @modelcontextprotocol/inspector node dist/index.js
+```
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
