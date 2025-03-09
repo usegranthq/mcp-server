@@ -1,5 +1,12 @@
 # @usegrant/mcp
 
+## 1.0.3
+
+### Patch Changes
+
+- aba3fd2: Update usegrant sdk to v1.4.1
+- a8ee869: Update mcp server version to match package version
+
 ## 1.0.2
 
 ### Patch Changes
