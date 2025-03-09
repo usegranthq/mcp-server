@@ -242,7 +242,7 @@ server.tool(
   },
 );
 
-server.tool(
+server.prompt(
   'validate_access_token',
   'Validate an access token',
   {
@@ -251,8 +251,14 @@ server.tool(
   },
   async ({ tenantId, accessToken }) => {
     const isValid = await usegrant.validateToken(tenantId, accessToken);
+
     return {
-      content: [{ type: 'text', text: JSON.stringify(isValid, null, 2) }],
+      messages: [
+        {
+          role: 'assistant',
+          content: { type: 'text', text: JSON.stringify(isValid, null, 2) },
+        },
+      ],
     };
   },
 );
