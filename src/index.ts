@@ -19,7 +19,7 @@ const usegrant = new UseGrant(apiKey);
 // Create MCP server
 const server = new McpServer({
   name: 'usegrant',
-  version: '1.0.0',
+  version: '1.0.3',
   description: 'UseGrant API integration for Model Context Protocol',
 });
 
