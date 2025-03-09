@@ -50,15 +50,10 @@ Add the following config to your `claude_desktop_config` file:
 
 To test the MCP server, we can use [mcp inspector](https://github.com/modelcontextprotocol/inspector).
 
-```bash
-# also set USEGRANT_API_KEY
-npx @modelcontextprotocol/inspector -e USEGRANT_API_KEY=your_api_key_here npx tsx src/index.ts
+Copy the `.env.example` file to `.env` and set the `USEGRANT_API_KEY` environment variable.
 
-# or
-# if to use custom ports
-export CLIENT_PORT=4321
-export SERVER_PORT=4322
-npx @modelcontextprotocol/inspector npx tsx src/index.ts
+```bash
+npx @modelcontextprotocol/inspector -e USEGRANT_API_KEY=$USEGRANT_API_KEY npx tsx src/index.ts
 ```
 
 To watch and build the project:
