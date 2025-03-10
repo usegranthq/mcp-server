@@ -2,6 +2,7 @@ name: Tests
 
 env:
   NODE_VERSION: 22
+  HUSKY: 0
 
 on:
   push:

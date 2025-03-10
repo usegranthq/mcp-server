@@ -9,6 +9,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 env:
   NODE_VERSION: 22
+  HUSKY: 0
 
 jobs:
   release:
