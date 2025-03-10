@@ -1,5 +1,11 @@
 # @usegrant/mcp
 
+## 1.1.0
+
+### Minor Changes
+
+- cb7aef2: Update @usegrant/sdk to v1.4.2
+
 ## 1.0.3
 
 ### Patch Changes
