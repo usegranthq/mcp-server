@@ -121,6 +121,80 @@ server.tool(
 );
 
 server.tool(
+  'list_domains',
+  'List all domains for a provider',
+  {
+    providerId: UgSchema.ProviderIdSchema,
+  },
+  async ({ providerId }) => {
+    const domains = await usegrant.getDomains(providerId);
+    return {
+      content: [{ type: 'text', text: JSON.stringify(domains, null, 2) }],
+    };
+  },
+);
+
+server.tool(
+  'add_domain',
+  'Add a domain to a provider',
+  {
+    providerId: UgSchema.ProviderIdSchema,
+    domain: UgSchema.DomainSchema.shape.domain,
+  },
+  async ({ providerId, domain }) => {
+    const domainEntity = await usegrant.addDomain(providerId, { domain });
+    return {
+      content: [{ type: 'text', text: JSON.stringify(domainEntity, null, 2) }],
+    };
+  },
+);
+
+server.tool(
+  'get_domain',
+  'Get a domain by provider and domain ID',
+  {
+    providerId: UgSchema.ProviderIdSchema,
+    domainId: UgSchema.DomainIdSchema,
+  },
+  async ({ providerId, domainId }) => {
+    const domain = await usegrant.getDomain(providerId, domainId);
+    return {
+      content: [{ type: 'text', text: JSON.stringify(domain, null, 2) }],
+    };
+  },
+);
+
+server.tool(
+  'delete_domain',
+  'Delete a domain from a provider',
+  {
+    providerId: UgSchema.ProviderIdSchema,
+    domainId: UgSchema.DomainIdSchema,
+  },
+  async ({ providerId, domainId }) => {
+    await usegrant.deleteDomain(providerId, domainId);
+    return {
+      content: [{ type: 'text', text: `Domain ${domainId} deleted` }],
+    };
+  },
+);
+
+server.tool(
+  'verify_domain',
+  'Verify a domain for a provider',
+  {
+    providerId: UgSchema.ProviderIdSchema,
+    domainId: UgSchema.DomainIdSchema,
+  },
+  async ({ providerId, domainId }) => {
+    const domain = await usegrant.verifyDomain(providerId, domainId);
+    return {
+      content: [{ type: 'text', text: JSON.stringify(domain, null, 2) }],
+    };
+  },
+);
+
+server.tool(
   'create_access_token',
   'Create a new access token for a client',
   {

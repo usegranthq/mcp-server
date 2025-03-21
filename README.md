@@ -12,6 +12,11 @@ This is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introdu
 - **create_client**: Create a new client for a provider
 - **get_client**: Get client details by provider and client ID
 - **delete_client**: Delete a client from a provider
+- **list_domains**: List all domains for a provider
+- **add_domain**: Add a domain to a provider
+- **get_domain**: Get a domain by provider and domain ID
+- **delete_domain**: Delete a domain from a provider
+- **verify_domain**: Verify a domain for a provider
 - **create_access_token**: Create a new access token for a client
 - **list_tenants**: List all tenants
 - **create_tenant**: Create a new tenant
