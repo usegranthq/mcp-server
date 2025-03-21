@@ -1,5 +1,15 @@
 # @usegrant/mcp
 
+## 1.2.0
+
+### Minor Changes
+
+- 2e7e0f8: Add support for domain api's
+
+### Patch Changes
+
+- 5bf14a0: Bump dependencies and devDependencies
+
 ## 1.1.0
 
 ### Minor Changes
