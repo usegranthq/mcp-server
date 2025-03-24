@@ -1,5 +1,11 @@
 # @usegrant/mcp
 
+## 1.3.0
+
+### Minor Changes
+
+- a9eaac3: Add tools for tenant provider policy api's
+
 ## 1.2.0
 
 ### Minor Changes
