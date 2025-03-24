@@ -24,7 +24,7 @@ const server = new McpServer({
 });
 
 server.tool('list_providers', 'List all providers', async () => {
-  const providers = await usegrant.getProviders();
+  const providers = await usegrant.listProviders();
   return {
     content: [{ type: 'text', text: JSON.stringify(providers, null, 2) }],
   };
@@ -71,7 +71,7 @@ server.tool(
   'List all clients',
   { providerId: UgSchema.ProviderIdSchema },
   async ({ providerId }) => {
-    const clients = await usegrant.getClients(providerId);
+    const clients = await usegrant.listClients(providerId);
     return {
       content: [{ type: 'text', text: JSON.stringify(clients, null, 2) }],
     };
@@ -127,7 +127,7 @@ server.tool(
     providerId: UgSchema.ProviderIdSchema,
   },
   async ({ providerId }) => {
-    const domains = await usegrant.getDomains(providerId);
+    const domains = await usegrant.listDomains(providerId);
     return {
       content: [{ type: 'text', text: JSON.stringify(domains, null, 2) }],
     };
@@ -211,7 +211,7 @@ server.tool(
 );
 
 server.tool('list_tenants', 'List all tenants', async () => {
-  const tenants = await usegrant.getTenants();
+  const tenants = await usegrant.listTenants();
   return {
     content: [{ type: 'text', text: JSON.stringify(tenants, null, 2) }],
   };
@@ -264,7 +264,7 @@ server.tool(
     tenantId: UgSchema.TenantIdSchema,
   },
   async ({ tenantId }) => {
-    const providers = await usegrant.getTenantProviders(tenantId);
+    const providers = await usegrant.listTenantProviders(tenantId);
     return {
       content: [{ type: 'text', text: JSON.stringify(providers, null, 2) }],
     };
@@ -316,15 +316,79 @@ server.tool(
   },
 );
 
+server.tool(
+  'list_tenant_provider_policies',
+  'List all policies for a tenant provider',
+  {
+    tenantId: UgSchema.TenantIdSchema,
+    providerId: UgSchema.TenantProviderIdSchema,
+  },
+  async ({ tenantId, providerId }) => {
+    const policies = await usegrant.listTenantProviderPolicies(tenantId, providerId);
+    return {
+      content: [{ type: 'text', text: JSON.stringify(policies, null, 2) }],
+    };
+  },
+);
+
+server.tool(
+  'create_tenant_provider_policy',
+  'Create a new policy for a tenant provider',
+  {
+    tenantId: UgSchema.TenantIdSchema,
+    providerId: UgSchema.TenantProviderIdSchema,
+    ...UgSchema.CreateTenantProviderPolicySchema.shape,
+  },
+  async ({ tenantId, providerId, ...payload }) => {
+    const policy = await usegrant.createTenantProviderPolicy(tenantId, providerId, payload);
+    return {
+      content: [{ type: 'text', text: JSON.stringify(policy, null, 2) }],
+    };
+  },
+);
+
+server.tool(
+  'get_tenant_provider_policy',
+  'Get a policy for a tenant provider',
+  {
+    tenantId: UgSchema.TenantIdSchema,
+    providerId: UgSchema.TenantProviderIdSchema,
+    policyId: UgSchema.TenantProviderPolicyIdSchema,
+  },
+  async ({ tenantId, providerId, policyId }) => {
+    const policy = await usegrant.getTenantProviderPolicy(tenantId, providerId, policyId);
+    return {
+      content: [{ type: 'text', text: JSON.stringify(policy, null, 2) }],
+    };
+  },
+);
+
+server.tool(
+  'delete_tenant_provider_policy',
+  'Delete a policy for a tenant provider',
+  {
+    tenantId: UgSchema.TenantIdSchema,
+    providerId: UgSchema.TenantProviderIdSchema,
+    policyId: UgSchema.TenantProviderPolicyIdSchema,
+  },
+  async ({ tenantId, providerId, policyId }) => {
+    await usegrant.deleteTenantProviderPolicy(tenantId, providerId, policyId);
+    return {
+      content: [{ type: 'text', text: `Policy ${policyId} deleted` }],
+    };
+  },
+);
+
 server.prompt(
   'validate_access_token',
   'Validate an access token',
   {
     tenantId: UgSchema.TenantIdSchema,
+    policyId: UgSchema.TenantProviderPolicyIdSchema,
     accessToken: z.string(),
   },
-  async ({ tenantId, accessToken }) => {
-    const isValid = await usegrant.validateToken(tenantId, accessToken);
+  async ({ tenantId, policyId, accessToken }) => {
+    const isValid = await usegrant.validateToken(tenantId, policyId, accessToken);
 
     return {
       messages: [
