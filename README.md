@@ -26,6 +26,10 @@ This is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introdu
 - **create_tenant_provider**: Create a new provider for a tenant
 - **get_tenant_provider**: Get a provider for a tenant
 - **delete_tenant_provider**: Delete a provider for a tenant
+- **list_tenant_provider_policies**: List all policies for a tenant provider
+- **create_tenant_provider_policy**: Create a new policy for a tenant provider
+- **get_tenant_provider_policy**: Get a policy for a tenant provider
+- **delete_tenant_provider_policy**: Delete a policy for a tenant provider
 - **validate_access_token**: Validate an access token for a tenant
 
 ## Requirements
