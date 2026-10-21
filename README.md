@@ -4,40 +4,22 @@ This is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introdu
 
 ## Tools
 
-- **list_providers**: List all providers
-- **create_provider**: Create a new provider
-- **get_provider**: Get a provider by ID
-- **delete_provider**: Delete a provider
-- **list_clients**: List all clients for a provider
-- **create_client**: Create a new client for a provider
-- **get_client**: Get client details by provider and client ID
-- **delete_client**: Delete a client from a provider
-- **list_domains**: List all domains for a provider
-- **add_domain**: Add a domain to a provider
-- **get_domain**: Get a domain by provider and domain ID
-- **delete_domain**: Delete a domain from a provider
-- **verify_domain**: Verify a domain for a provider
-- **create_access_token**: Create a new access token for a client
-- **list_tenants**: List all tenants
-- **create_tenant**: Create a new tenant
-- **get_tenant**: Get a tenant by ID
-- **delete_tenant**: Delete a tenant
-- **list_tenant_providers**: List all providers for a tenant
-- **create_tenant_provider**: Create a new provider for a tenant
-- **get_tenant_provider**: Get a provider for a tenant
-- **delete_tenant_provider**: Delete a provider for a tenant
-- **list_tenant_provider_policies**: List all policies for a tenant provider
-- **create_tenant_provider_policy**: Create a new policy for a tenant provider
-- **get_tenant_provider_policy**: Get a policy for a tenant provider
-- **delete_tenant_provider_policy**: Delete a policy for a tenant provider
+The tools are generated from the [UseGrant OpenAPI spec](https://sdk.usegrant.dev/open-api.json) when the server starts, one tool per API operation, so new API operations are available without updating the server.
 
-## Prompts
+Tools are named after the operation, for example:
 
-- **validate_access_token**: Validate an access token for a tenant
+- **providers_list**: List Providers
+- **providers_clients_create**: Create Client
+- **providers_domains_verify**: Verify Domain
+- **tenants_providers_policies_create**: Create Tenant Provider Policy
+- **tenants_tokens_validate**: Validate Token
+
+Read-only operations are marked with `readOnlyHint` and delete operations with `destructiveHint`, so MCP clients can ask for confirmation before changing anything.
 
 ## Requirements
 
-- Node.js 18 or higher
+- Node.js 22.19 or higher
+- Network access to `sdk.usegrant.dev`, the OpenAPI spec is loaded on start
 - A valid UseGrant API key. Refer [here](https://usegrant.dev/docs/authentication) for more details.
 
 ## Using with Claude desktop
