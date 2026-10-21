@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import { createRequire } from 'node:module';
+
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import UseGrant from '@usegrant/sdk';
@@ -16,10 +18,12 @@ if (!apiKey) {
 // Initialize UseGrant SDK
 const usegrant = new UseGrant(apiKey);
 
+const { version } = createRequire(import.meta.url)('../package.json') as { version: string };
+
 // Create MCP server
 const server = new McpServer({
   name: 'usegrant',
-  version: '1.0.3',
+  version,
   description: 'UseGrant API integration for Model Context Protocol',
 });
 

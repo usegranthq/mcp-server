@@ -30,11 +30,14 @@ This is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introdu
 - **create_tenant_provider_policy**: Create a new policy for a tenant provider
 - **get_tenant_provider_policy**: Get a policy for a tenant provider
 - **delete_tenant_provider_policy**: Delete a policy for a tenant provider
+
+## Prompts
+
 - **validate_access_token**: Validate an access token for a tenant
 
 ## Requirements
 
-- Node.js 16 or higher
+- Node.js 18 or higher
 - A valid UseGrant API key. Refer [here](https://usegrant.dev/docs/authentication) for more details.
 
 ## Using with Claude desktop
@@ -46,7 +49,7 @@ Add the following config to your `claude_desktop_config` file:
   "mcpServers": {
     "usegrant": {
       "command": "npx",
-      "args": ["-y", "@usegrant/mcp-server"],
+      "args": ["-y", "@usegrant/mcp"],
       "env": {
         "USEGRANT_API_KEY": "your_api_key_here"
       }
