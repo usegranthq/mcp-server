@@ -27,7 +27,7 @@
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc",
-    "postbuild": "shx chmod +x dist/*.js",
+    "postbuild": "node scripts/make-executable.mjs",
     "prepare": "husky"
   },
   "dependencies": {
@@ -42,7 +42,6 @@
     "lint-staged": "^17.6.0",
     "oxlint": "^1.89.0",
     "prettier": "^3.9.10",
-    "shx": "^0.4.0",
     "typescript": "^7.0.2"
   }
 }
