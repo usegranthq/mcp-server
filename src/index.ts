@@ -4,7 +4,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import UseGrant from '@usegrant/sdk';
 import * as UgSchema from '@usegrant/sdk/schema';
-import { z } from 'zod';
+import { z } from 'zod/v4';
 
 // Check for required API key
 const apiKey = process.env.USEGRANT_API_KEY;
