@@ -1,5 +1,11 @@
 # @usegrant/mcp
 
+## 1.3.1
+
+### Patch Changes
+
+- 2b2f402: Report the package version to MCP clients instead of a hardcoded version
+
 ## 1.3.0
 
 ### Minor Changes
